@@ -8,11 +8,11 @@ Created on Sun May 31 05:48:39 2020
 import csv
 
 #open csv file and go through data 
-file_CSV = open('epaPM2016.csv')
+file_CSV = open('csaNO2.csv')
 data_CSV = csv.reader(file_CSV)
 
 #skip header in csv file
-next(data_CSV)
+#next(data_CSV)
 
 #put csv elements into a list to simplify analysis
 list_CSV = list(data_CSV)
@@ -20,21 +20,20 @@ list_CSV = list(data_CSV)
 count = 0
 for row in list_CSV:
     #reading from csv is str so convert to float for if else statements
-    rawConc = float(row[5])
+    no2Conc = float(row[0])
     
     #print concentration value and respective power setting
-    if rawConc > 18.0:
-       print (str(rawConc) + " = 100%")
-    elif 14.0 < rawConc <= 18.0:
-       print (str(rawConc) + " = 75%")
-    elif 10.0 < rawConc <= 14.0:
-       print (str(rawConc) + " = 50%")
-    elif 4.0 < rawConc <= 10.0:
-       print (str(rawConc) + " = 25%")
+    if no2Conc == -999.0: #no reading
+       print (str(no2Conc) + " = A reading was not performed")
+    elif no2Conc == -888.0: #reading error
+       print (str(no2Conc) + " = There is an error in data collection")
+    elif 3.61e-09 < no2Conc:
+       print (str(no2Conc) + " = 100%")
+    elif 4.10e-10 < no2Conc <= 3.61e-09:
+       print (str(no2Conc) + " = 75%")
+    elif 1.76e-11 < no2Conc <= 4.10e-10:
+       print (str(no2Conc) + " = 50%")
+    elif 1.2e-12 < no2Conc <= 1.76e-11:
+       print (str(no2Conc) + " = 25%")
     else:
-       print (str(rawConc) + " = 0%")
-    
-    #counter to stop getting values after a certain date
-    count += 1
-    if count == 121:
-        break
+       print (str(no2Conc) + " = 0%")
