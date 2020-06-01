@@ -24,16 +24,20 @@ for row in list_CSV:
     
     #print concentration value and respective power setting
     if no2Conc == -999.0: #no reading
-       print (str(no2Conc) + " = A reading was not performed")
+       print(str(no2Conc) + " = A reading was not performed")
     elif no2Conc == -888.0: #reading error
-       print (str(no2Conc) + " = There is an error in data collection")
+       print(str(no2Conc) + " = There is an error in data collection")
     elif 3.61e-09 < no2Conc:
-       print (str(no2Conc) + " = 100%")
+       print(str(no2Conc) + " = Please keep the air purfier on at full capacity. The air outdoors has very high levels of NO2.")
+       print("   It is recommended that everyone be wary of the time you spend outdoors as long exposure may be harmful.\n")
     elif 4.10e-10 < no2Conc <= 3.61e-09:
-       print (str(no2Conc) + " = 75%")
+       print(str(no2Conc) + " = Please set the air purifier at 75% capacity. The air outdoors has some high levels of NO2.")
+       print("   It is recommended that patients with underlying health conditions should not leave their room if possible.\n")
     elif 1.76e-11 < no2Conc <= 4.10e-10:
-       print (str(no2Conc) + " = 50%")
+       print(str(no2Conc) + " = Please set the air purifier at 50% capacity. The air outdoors has some moderate levels of NO2.")
+       print("   It is recommended that patients with underlying health conditions should not go outside if possible.\n")
     elif 1.2e-12 < no2Conc <= 1.76e-11:
-       print (str(no2Conc) + " = 25%")
+       print(str(no2Conc) + " = Please set the air purifier at 25% capacity. The air outdoors has some low concentrations of NO2.")
+       print("   Going outside would not be harmful, but may be uncomfortable to breathe if you are sensitive.\n")    
     else:
-       print (str(no2Conc) + " = 0%")
+       print(str(no2Conc) + " = You can keep the purifier off. The air outdoors seems pretty good todday!\n")
