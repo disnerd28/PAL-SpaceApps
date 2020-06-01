@@ -42,7 +42,7 @@ for row in list_epaPM2_5:
     pmConc = float(row[4])
     
     #print concentration value and respective power setting
-    if 3.61e-09 < pmConc:
+    if 35 < pmConc:
        print(str(pmConc) + " ug/m3 = Please keep the air purfier on at full capacity. The air outdoors has very high levels of PM.")
        print("   It is recommended that everyone be wary of the time spent outdoors as long exposure may be harmful.\n")
     elif 12 < pmConc <= 35:
